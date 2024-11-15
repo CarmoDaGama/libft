@@ -20,8 +20,19 @@ static void	ft_del(void *ptr)
 		ptr = NULL;
 	}
 }
+static t_list	*ft_new(void *content)
+{
+	t_list	*list;
 
-void	*manage_momery(void *ptr, bool clean)
+	list = malloc(sizeof(t_list));
+	if (!list)
+		return (NULL);
+	list->content = content;
+	list->next = NULL;
+	return (list);
+}
+
+static void	*manage_memory(void *ptr, bool clean)
 {
 	static t_list	*garbage_list;
 
@@ -32,7 +43,23 @@ void	*manage_momery(void *ptr, bool clean)
 	}
 	else
 	{
-		ft_lstadd_back(&garbage_list, ft_lstnew(ptr));
+		ft_lstadd_back(&garbage_list, ft_new(ptr));
 		return (ptr);
 	}
 }
+
+void	*ft_malloc(size_t count, size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(count * size);
+	manage_memory(ptr, false);
+	return (ptr);
+}
+
+void	ft_free_collector(void)
+{
+	manage_memory(NULL, true);
+}
+
+

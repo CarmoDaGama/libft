@@ -101,13 +101,12 @@ int	ft_printf(const char *format, ...)
 
 	if (!format || *format == '\0')
 		return (0);
-	str = ft_strdup(format);
+	str = (char *)format;
 	if (!str || *str == '\0')
 		return (0);
 	count = 0;
 	va_start(args, format);
 	count = processor(str, args);
 	va_end(args);
-	free(str);
 	return (count);
 }

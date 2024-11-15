@@ -41,7 +41,7 @@ SRC = ft_isalpha \
 	ft_putnbr_fd \
 	ft_isspace \
 	get_next_line \
-	manage_memory \
+	garbage_collector \
 	flagmanager \
 	ft_printf \
 	helpers \
