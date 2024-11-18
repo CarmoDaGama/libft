@@ -53,7 +53,8 @@ SRC = ft_isalpha \
 	putstr \
 	putunsigned \
 	utoa \
-	xtoa
+	xtoa \
+	handle_sginal
 	
 BONUS_SRC = ft_lstnew \
 	ft_lstadd_front \

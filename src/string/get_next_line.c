@@ -40,7 +40,7 @@ char	*get_next_line(int fd)
 			break ;
 		size = read(fd, buffer, BUFFER_SIZE);
 	}
-	return ( ft_slice(&string));
+	return (ft_slice(&string));
 }
 
 static int	ft_found_error(int fd)

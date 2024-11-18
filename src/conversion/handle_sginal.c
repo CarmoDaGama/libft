@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   handle_sginal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgama <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/31 11:29:07 by cgama             #+#    #+#             */
-/*   Updated: 2024/05/31 11:29:15 by cgama            ###   ########.fr       */
+/*   Created: 2024/11/18 14:31:43 by cgama             #+#    #+#             */
+/*   Updated: 2024/11/18 14:31:46 by cgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+static void	handle_newline(int sig)
 {
-	void	*r;
+	(void)sig;
+	ft_putchar_fd('\n', 1);
+	ft_free_collector();
+	usleep(5000);
+	exit(0);
+}
 
-	r = ft_malloc(count, size);
-	if (!r)
-		return (NULL);
-	ft_bzero(r, size * count);
-	return (r);
+void	set_signals(void)
+{
+	signal(SIGINT, handle_newline);
+	signal(SIGQUIT, SIG_IGN);
 }

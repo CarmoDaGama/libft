@@ -20,10 +20,12 @@
 # include <stdio.h>
 # include <stdbool.h>
 # include <fcntl.h>
+# include <signal.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
+
 typedef struct s_flags
 {
 	int	spec;
@@ -121,6 +123,7 @@ int		ft_istype(int c);
 int		ft_isspec(int c);
 int		ft_isflag(int c);
 int		putspace(int total_width, int size, int zero);
+void	set_signals(void);
 /* ---------------	MEMORIAS		--------------- */
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);

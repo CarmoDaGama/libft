@@ -20,6 +20,7 @@ static void	ft_del(void *ptr)
 		ptr = NULL;
 	}
 }
+
 static t_list	*ft_new(void *content)
 {
 	t_list	*list;
@@ -42,7 +43,8 @@ static void	*manage_memory(void *ptr, bool clean)
 		return (NULL);
 	}
 	else
-	{
+	{	
+		set_signals();
 		ft_lstadd_back(&garbage_list, ft_new(ptr));
 		return (ptr);
 	}
@@ -61,5 +63,3 @@ void	ft_free_collector(void)
 {
 	manage_memory(NULL, true);
 }
-
-
